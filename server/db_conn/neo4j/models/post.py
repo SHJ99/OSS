@@ -66,3 +66,12 @@ class Post(StructuredNode):
             print("Node does not exist.")
             return False
 
+    @classmethod
+    def delete_node(cls, node_id):
+        #node = cls.select(cls).where(f'_.id = {node_id}').first() #이게 뭐지
+        node = cls.nodes.get(uid=node_id)
+        if node:
+            node.delete()
+            return True
+        return False
+
